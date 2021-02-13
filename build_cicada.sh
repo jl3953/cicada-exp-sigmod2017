@@ -1,6 +1,6 @@
 #!/bin/sh
 
-cicada-engine/script/setup.sh 0 0
+cicada-engine/script/setup.sh 16384 16384
 
 cd cicada-engine || exit 1
 
