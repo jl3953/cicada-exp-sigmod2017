@@ -310,7 +310,7 @@ def enum_exps(seq):
 
         # YCSB
         # if alg.find('-REF') == -1:
-        if True:
+        if False:
           ycsb = dict(common)
           total_count = 10 * 1000 * 1000
           ycsb.update({ 'bench': 'YCSB', 'total_count': total_count })
@@ -333,7 +333,7 @@ def enum_exps(seq):
           #record_size = 1000
           record_size = 100
           req_per_query = 1
-          tx_count = 2000000
+          tx_count = 200000
           ycsb.update({ 'record_size': record_size, 'req_per_query': req_per_query, 'tx_count': tx_count })
 
           for read_ratio in [0.50, 0.95]:
@@ -416,7 +416,7 @@ def enum_exps(seq):
 
         # YCSB
         # if alg.find('-REF') == -1:
-        if True:
+        if False:
           ycsb = dict(common)
           total_count = 10 * 1000 * 1000
           ycsb.update({ 'bench': 'YCSB', 'total_count': total_count })
@@ -438,7 +438,7 @@ def enum_exps(seq):
           # record_size = 1000
           record_size = 100
           req_per_query = 1
-          tx_count = 2000000
+          tx_count = 200000
           ycsb.update({ 'record_size': record_size, 'req_per_query': req_per_query, 'tx_count': tx_count })
 
           for read_ratio in [0.50, 0.95]:
@@ -458,24 +458,24 @@ def enum_exps(seq):
         common = { 'seq': seq, 'tag': tag, 'alg': alg, 'thread_count': thread_count }
 
         # YCSB
-        ycsb = dict(common)
-        total_count = 10 * 1000 * 1000
-        ycsb.update({ 'bench': 'YCSB', 'total_count': total_count })
+        #ycsb = dict(common)
+        #total_count = 10 * 1000 * 1000
+        #ycsb.update({ 'bench': 'YCSB', 'total_count': total_count })
 
-        for record_size in [10, 20, 40, 100, 200, 400, 1000, 2000]:
-          req_per_query = 16
-          tx_count = 200000
-          ycsb.update({ 'record_size': record_size, 'req_per_query': req_per_query, 'tx_count': tx_count })
+        #for record_size in [10, 20, 40, 100, 200, 400, 1000, 2000]:
+        #  req_per_query = 16
+        #  tx_count = 200000
+        #  ycsb.update({ 'record_size': record_size, 'req_per_query': req_per_query, 'tx_count': tx_count })
 
-          read_ratio = 0.95
-          zipf_theta = 0.00
-          ycsb.update({ 'read_ratio': read_ratio, 'zipf_theta': zipf_theta })
-          yield dict(ycsb)
+        #  read_ratio = 0.95
+        #  zipf_theta = 0.00
+        #  ycsb.update({ 'read_ratio': read_ratio, 'zipf_theta': zipf_theta })
+        #  yield dict(ycsb)
 
-          if alg in ['MICA', 'MICA+INDEX']:
-            ycsb.update({ 'no_inlining': 1 })
-            yield dict(ycsb)
-            del ycsb['no_inlining']
+        #  if alg in ['MICA', 'MICA+INDEX']:
+        #    ycsb.update({ 'no_inlining': 1 })
+        #    yield dict(ycsb)
+        #    del ycsb['no_inlining']
 
   tag = 'singlekey'
   # for alg in all_algs:
@@ -487,84 +487,85 @@ def enum_exps(seq):
       common = { 'seq': seq, 'tag': tag, 'alg': alg, 'thread_count': thread_count }
 
       # YCSB
-      ycsb = dict(common)
-      total_count = 1
-      ycsb.update({ 'bench': 'YCSB', 'total_count': total_count })
+      #ycsb = dict(common)
+      #total_count = 1
+      #ycsb.update({ 'bench': 'YCSB', 'total_count': total_count })
 
-      record_size = 16
-      req_per_query = 1
-      if thread_count <= 1:
-        tx_count = 8000000
-      elif thread_count <= 4:
-        tx_count = 4000000
-      else:
-        tx_count = 2000000
+      #record_size = 16
+      #req_per_query = 1
+      #if thread_count <= 1:
+      #  tx_count = 8000000
+      #elif thread_count <= 4:
+      #  tx_count = 4000000
+      #else:
+      #  tx_count = 2000000
 
-      ycsb.update({ 'record_size': record_size, 'req_per_query': req_per_query, 'tx_count': tx_count })
+      #ycsb.update({ 'record_size': record_size, 'req_per_query': req_per_query, 'tx_count': tx_count })
 
-      read_ratio = 0.00
-      zipf_theta = 0.00
-      ycsb.update({ 'read_ratio': read_ratio, 'zipf_theta': zipf_theta })
-      yield dict(ycsb)
+      #read_ratio = 0.00
+      #zipf_theta = 0.00
+      #ycsb.update({ 'read_ratio': read_ratio, 'zipf_theta': zipf_theta })
+      #yield dict(ycsb)
 
   def _common_exps(common):
     if common['tag'] in ('backoff', 'factor', 'native-factor'):
+      print("hi!")
       # YCSB
-      ycsb = dict(common)
-      total_count = 10 * 1000 * 1000
-      ycsb.update({ 'bench': 'YCSB', 'total_count': total_count })
+      #ycsb = dict(common)
+      #total_count = 10 * 1000 * 1000
+      #ycsb.update({ 'bench': 'YCSB', 'total_count': total_count })
 
-      # record_size = 1000
-      record_size = 100
-      req_per_query = 16
-      tx_count = 200000
-      ycsb.update({ 'record_size': record_size, 'req_per_query': req_per_query, 'tx_count': tx_count })
+      ## record_size = 1000
+      #record_size = 100
+      #req_per_query = 16
+      #tx_count = 200000
+      #ycsb.update({ 'record_size': record_size, 'req_per_query': req_per_query, 'tx_count': tx_count })
 
-      # if common['tag'] == 'backoff':
-      #   # for read_ratio in [0.50, 0.95]:
-      #   # for zipf_theta in [0.00, 0.99]:
-      #   read_ratio = 0.50
-      #   zipf_theta = 0.90
-      #   ycsb.update({ 'read_ratio': read_ratio, 'zipf_theta': zipf_theta })
-      #   yield dict(ycsb)
+      ## if common['tag'] == 'backoff':
+      ##   # for read_ratio in [0.50, 0.95]:
+      ##   # for zipf_theta in [0.00, 0.99]:
+      ##   read_ratio = 0.50
+      ##   zipf_theta = 0.90
+      ##   ycsb.update({ 'read_ratio': read_ratio, 'zipf_theta': zipf_theta })
+      ##   yield dict(ycsb)
 
-      read_ratio = 0.50
-      zipf_theta = 0.99
-      ycsb.update({ 'read_ratio': read_ratio, 'zipf_theta': zipf_theta })
-      yield dict(ycsb)
+      #read_ratio = 0.50
+      #zipf_theta = 0.99
+      #ycsb.update({ 'read_ratio': read_ratio, 'zipf_theta': zipf_theta })
+      #yield dict(ycsb)
 
-      if common['tag'] == 'backoff':
-        # record_size = 1000
-        record_size = 100
-        req_per_query = 1
-        tx_count = 2000000
-        ycsb.update({ 'record_size': record_size, 'req_per_query': req_per_query, 'tx_count': tx_count })
+      #if common['tag'] == 'backoff':
+      #  # record_size = 1000
+      #  record_size = 100
+      #  req_per_query = 1
+      #  tx_count = 2000000
+      #  ycsb.update({ 'record_size': record_size, 'req_per_query': req_per_query, 'tx_count': tx_count })
 
-        # for read_ratio in [0.50, 0.95]:
-        # for zipf_theta in [0.00, 0.99]:
-        read_ratio = 0.50
-        zipf_theta = 0.99
-        ycsb.update({ 'read_ratio': read_ratio, 'zipf_theta': zipf_theta })
-        yield dict(ycsb)
+      #  # for read_ratio in [0.50, 0.95]:
+      #  # for zipf_theta in [0.00, 0.99]:
+      #  read_ratio = 0.50
+      #  zipf_theta = 0.99
+      #  ycsb.update({ 'read_ratio': read_ratio, 'zipf_theta': zipf_theta })
+      #  yield dict(ycsb)
 
-      if common['tag'] in ('factor', 'native-factor'):
-        # record_size = 1000
-        record_size = 100
-        req_per_query = 1
-        tx_count = 2000000
-        ycsb.update({ 'record_size': record_size, 'req_per_query': req_per_query, 'tx_count': tx_count })
+      #if common['tag'] in ('factor', 'native-factor'):
+      #  # record_size = 1000
+      #  record_size = 100
+      #  req_per_query = 1
+      #  tx_count = 2000000
+      #  ycsb.update({ 'record_size': record_size, 'req_per_query': req_per_query, 'tx_count': tx_count })
 
-        # for read_ratio in [0.50, 0.95]:
-        # for zipf_theta in [0.00, 0.99]:
-        # read_ratio = 0.95
-        # zipf_theta = 0.00
-        # ycsb.update({ 'read_ratio': read_ratio, 'zipf_theta': zipf_theta })
-        # yield dict(ycsb)
+      #  # for read_ratio in [0.50, 0.95]:
+      #  # for zipf_theta in [0.00, 0.99]:
+      #  # read_ratio = 0.95
+      #  # zipf_theta = 0.00
+      #  # ycsb.update({ 'read_ratio': read_ratio, 'zipf_theta': zipf_theta })
+      #  # yield dict(ycsb)
 
-        read_ratio = 0.95
-        zipf_theta = 0.99
-        ycsb.update({ 'read_ratio': read_ratio, 'zipf_theta': zipf_theta })
-        yield dict(ycsb)
+      #  read_ratio = 0.95
+      #  zipf_theta = 0.99
+      #  ycsb.update({ 'read_ratio': read_ratio, 'zipf_theta': zipf_theta })
+      #  yield dict(ycsb)
 
     if common['tag'] in ('gc', 'backoff', 'factor'):
       # TPCC
@@ -679,32 +680,32 @@ def enum_exps(seq):
       common = { 'seq': seq, 'tag': tag, 'alg': alg, 'thread_count': thread_count }
 
       # YCSB
-      ycsb = dict(common)
-      total_count = 10 * 1000 * 1000
-      ycsb.update({ 'bench': 'YCSB', 'total_count': total_count })
+      #ycsb = dict(common)
+      #total_count = 10 * 1000 * 1000
+      #ycsb.update({ 'bench': 'YCSB', 'total_count': total_count })
 
-      for max_scan_len in [100]:
-        for record_size in [10, 100, 1000]:
-          req_per_query = 1
-          tx_count = 200000
-          ycsb.update({ 'record_size': record_size, 'req_per_query': req_per_query, 'tx_count': tx_count })
+      #for max_scan_len in [100]:
+      #  for record_size in [10, 100, 1000]:
+      #    req_per_query = 1
+      #    tx_count = 200000
+      #    ycsb.update({ 'record_size': record_size, 'req_per_query': req_per_query, 'tx_count': tx_count })
 
-          ycsb.update({ 'max_scan_len': max_scan_len })
-          #  if record_size in [10, 100]:
-          #    ycsb.update({ 'column_count': 1 })
+      #    ycsb.update({ 'max_scan_len': max_scan_len })
+      #    #  if record_size in [10, 100]:
+      #    #    ycsb.update({ 'column_count': 1 })
 
-          read_ratio = 0.95
-          zipf_theta = 0.99
+      #    read_ratio = 0.95
+      #    zipf_theta = 0.99
 
-          ycsb.update({ 'read_ratio': read_ratio, 'zipf_theta': zipf_theta })
-          yield dict(ycsb)
+      #    ycsb.update({ 'read_ratio': read_ratio, 'zipf_theta': zipf_theta })
+      #    yield dict(ycsb)
 
-          ycsb.update({ 'no_inlining': 1 })
-          yield dict(ycsb)
-          del ycsb['no_inlining']
+      #    ycsb.update({ 'no_inlining': 1 })
+      #    yield dict(ycsb)
+      #    del ycsb['no_inlining']
 
-          #  if record_size in [10, 100]:
-          #    del ycsb['column_count']
+      #    #  if record_size in [10, 100]:
+      #    #    del ycsb['column_count']
 
 
   tag = 'native-full-table-scan'
@@ -713,31 +714,31 @@ def enum_exps(seq):
       common = { 'seq': seq, 'tag': tag, 'alg': alg, 'thread_count': thread_count }
 
       # YCSB
-      ycsb = dict(common)
-      total_count = 10 * 1000 * 1000
-      ycsb.update({ 'bench': 'YCSB', 'total_count': total_count })
+      #ycsb = dict(common)
+      #total_count = 10 * 1000 * 1000
+      #ycsb.update({ 'bench': 'YCSB', 'total_count': total_count })
 
-      for record_size in [10, 100, 1000]:
-        req_per_query = 1
-        tx_count = 20
-        ycsb.update({ 'record_size': record_size, 'req_per_query': req_per_query, 'tx_count': tx_count })
+      #for record_size in [10, 100, 1000]:
+      #  req_per_query = 1
+      #  tx_count = 20
+      #  ycsb.update({ 'record_size': record_size, 'req_per_query': req_per_query, 'tx_count': tx_count })
 
-        ycsb.update({ 'full_table_scan': 1 })
-        #  if record_size in [10, 100]:
-        #    ycsb.update({ 'column_count': 1 })
+      #  ycsb.update({ 'full_table_scan': 1 })
+      #  #  if record_size in [10, 100]:
+      #  #    ycsb.update({ 'column_count': 1 })
 
-        read_ratio = 0.95
-        zipf_theta = 0.99
+      #  read_ratio = 0.95
+      #  zipf_theta = 0.99
 
-        ycsb.update({ 'read_ratio': read_ratio, 'zipf_theta': zipf_theta })
-        yield dict(ycsb)
+      #  ycsb.update({ 'read_ratio': read_ratio, 'zipf_theta': zipf_theta })
+      #  yield dict(ycsb)
 
-        ycsb.update({ 'no_inlining': 1 })
-        yield dict(ycsb)
-        del ycsb['no_inlining']
+      #  ycsb.update({ 'no_inlining': 1 })
+      #  yield dict(ycsb)
+      #  del ycsb['no_inlining']
 
-        #  if record_size in [10, 100]:
-        #    del ycsb['column_count']
+      #  #  if record_size in [10, 100]:
+      #  #    del ycsb['column_count']
 
 
 def update_conf(conf, exp):
@@ -1058,6 +1059,7 @@ def run(exp, prepare_only):
   if not exp['tag'].startswith('native-'):
     conf = open('DBx1000/config-std.h').read()
     conf = update_conf(conf, exp)
+    print(conf)
     open('DBx1000/config.h', 'w').write(conf)
 
     shutil.copy('cicada-engine/src/mica/test/test_tx_conf_org.h',
